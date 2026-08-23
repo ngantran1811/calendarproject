@@ -28,7 +28,9 @@ var habitTitle = document.getElementById("habitTitle");
 habitTitle.onclick = function () {
   // ask a question & save the answer to "habits"
   let habits = prompt("What is your habit", habitTitle.innerHTML);
-  if(habits.length == 0){ //if they did not type anything
+  if (habits == null) return;
+
+  if(habits.trim().length == 0){ //if they did not type anything
     habitTitle.innerHTML = "Click to set your habit";
   }else{  // update the habit to show what they typed
     habitTitle.innerHTML = habits;
@@ -50,10 +52,10 @@ for(var i=0; i <days.length; i++){
   var day = days[rowCount].getElementsByClassName("day");
   for (var j =0; j < day.length; j++){
 
-    if(dayCount <= currentDate - 1){
-      day[j].setAttribute("style", "border:2px solid black; color: black;");
-    }else if (dayCount < daysInThisMonth) {
-      day[j].setAttribute("style", "border:2px solid black; color: black;");
+    if(dayCount == currentDate - 1){
+      // day[j].setAttribute("style", "border:2px solid black");
+    // }else if (dayCount < daysInThisMonth) {
+    //   day[j].setAttribute("style", "border:2px solid black; color: black;");
     }
 
     if (dayCount < daysInThisMonth) {
@@ -62,7 +64,7 @@ for(var i=0; i <days.length; i++){
       dayCount++;
     }else {
       day[j].innerHTML = "";
-      day[j].setAttribute("style", "background-color: red");
+      day[j].setAttribute("style", "background-color: pink");
     }
   }
   rowCount++
